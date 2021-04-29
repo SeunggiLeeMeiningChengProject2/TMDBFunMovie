@@ -10,15 +10,26 @@
 <body>
     <header>
         <h1>TMDB Movie Fun</h1>
-
     </header>
 
     <main>
+        <form>
+            <label></label>
+            <label for="menuChoice" class="sr-only">what search type do you want</label>
+            <select name="menuChoice" id="menuChoice">
+                <option value="title">search by movie title</option>
+                <option value="actor">search by actor/actress </option>
+                <option value="genre">search by genre</option>
+            </select>
+            <label for='userInput' class='sr-only'>Search bar</label>
+            <input type='text' name="userInput" id='userInput'>
 
+            <button type="submit">Search</button>
+        </form>
 
 
     </main>
 
-
+<script src="app.js"></script>
 </body>
 </html>
