@@ -1,0 +1,12 @@
+@import "partials/setup";
+@import "partials/variables";
+
+body {
+    background-color: $white;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 1300px;
+    width: 100%;
+}
