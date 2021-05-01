@@ -43,6 +43,7 @@ TMDBMovieFun.getMovies = () => {
         return response.json();
     })
         .then((jsonResponse) => {
+
             TMDBMovieFun.displayPosters(jsonResponse.results);
             console.log(jsonResponse);
             // for (let i=0; i<jsonResponse.results.length ;i++){
@@ -69,30 +70,48 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
 
     const gallery = document.querySelector('.gallery');
 
-    simpleResultArray.forEach((movie)=>{
-        const listElement = document.createElement('li');
+    // simpleResultArray.forEach((movie)=>{
 
-        const poster = document.createElement('img');
-        const basePosterURL = "https://image.tmdb.org/t/p/w500/";
-        
-        poster.src = `${basePosterURL}${movie.poster_path}`;
+        for (let i = 0; i < simpleResultArray.length; i++) {
 
 
-        listElement.append(poster);
-        gallery.append(listElement);
+            const listElement = document.createElement('li');
+            
 
-        
+            const poster = document.createElement('img');
+            poster.id = simpleResultArray[i].id;
+
+            const basePosterURL = "https://image.tmdb.org/t/p/w500/";
+
+            poster.src = `${basePosterURL}${simpleResultArray[i].poster_path}`;
 
 
-        poster.addEventListener('click', function () {
+            listElement.append(poster);
+            gallery.append(listElement);
+
+            // Document.getElementsByClassName('i');
+            // console.log(simpleResultArray);
+
+            
+
+        }
+
+        document.querySelectorAll('img').addEventListener('click', function (event) {
             console.log("try");
+            // console.log(event);
+            console.log(event.target);
+            const chosenMovieID = event.target.attributes[0].nodeValue;
+
+            TMDBMovieFun.getMovieDetail(chosenMovieID);
         });
+
+        
 
         // TMDBMovieFun.displayDetail(movie.id);
 
 
 
-    });
+    // });
 }
 
 
@@ -101,9 +120,30 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
 
 // TMDBMovieFun.displayDetail = (movieID) => {
 
+TMDBMovieFun.getMovieDetail = (chosenMovieID) => {
+    const detailedMovieURL = `https://api.themoviedb.org/3/movie/${chosenMovieID}`;
 
+    const url = new URL(detailedMovieURL);
+    console.log(url);
+    url.search = new URLSearchParams({
+        
+    
+        api_key: apiKey
 
+    })
 
+    fetch(url).then((response) => {
+        // console.log(response.json());
+        return response.json();
+    })
+        .then((jsonResponse) => {
+            TMDBMovieFun.displayPosters(jsonResponse.results);
+            console.log(jsonResponse);
+
+        })
+    
+    
+    }
 // }
 
 
