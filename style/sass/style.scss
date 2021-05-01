@@ -10,3 +10,17 @@ body {
     max-width: 1300px;
     width: 100%;
 }
+
+.gallery {
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    width:100vw;
+    img {
+        width:40%;
+        margin:1rem;
+    }
+
+
+
+}
