@@ -12,20 +12,7 @@ const peopleURL = `${baseURL}${peopleRoute}`
 let selectedURL = undefined;
 
 
-let userChoice = document.querySelector('#menuChoice').value;
-console.log(userChoice);
 
-if (userChoice === 'title'){
-    selectedURL = movieURL;
-}
-
-else if (userChoice === 'actor'){
-    selectedURL = peopleURL;
-}
-
-else {
-    selectedURL = undefined;
-}
 
 // const testURL = 'https://api.themoviedb.org/3/search/person?api_key=d8135c763a58289c458ea2f5c9b1d7a4&language=en-US&query=cruise&page=1&include_adult=false';
 
@@ -47,8 +34,9 @@ TMDBMovieFun.getMovies = (userSearch) => {
     url.search = new URLSearchParams({
         api_key: apiKey,
         query: userSearch
-
     })
+
+    console.log(url);
 
     fetch(url).then((response) => {
         // console.log(response.json());
@@ -56,7 +44,25 @@ TMDBMovieFun.getMovies = (userSearch) => {
     })
         .then((jsonResponse) => {
             console.log('hi');
-            TMDBMovieFun.displayPosters(jsonResponse.results);
+
+
+            let userChoice = document.querySelector('#menuChoice').value;
+
+            if (userChoice === "title") {
+                TMDBMovieFun.movieFilter(jsonResponse.results);
+            }
+            else if (userChoice === "actor") {
+                TMDBMovieFun.profileFilter(jsonResponse.results);
+            }
+            else {
+                console.log("genere")
+            }
+
+            
+
+
+            
+            // TMDBMovieFun.displayPosters(jsonResponse.results);
             console.log(jsonResponse.results);
             // for (let i=0; i<jsonResponse.results.length ;i++){
             //     console.log(jsonResponse.results[i]);
@@ -77,6 +83,25 @@ TMDBMovieFun.getMovies = (userSearch) => {
 }
 
 
+TMDBMovieFun.movieFilter = (simpleResultArray) => {
+
+    TMDBMovieFun.simpleResultArrayFiltered = simpleResultArray.filter((item) => {
+        return item.poster_path;
+    })
+
+    TMDBMovieFun.displayPosters(TMDBMovieFun.simpleResultArrayFiltered);
+    
+}
+
+
+TMDBMovieFun.profileFilter = (simpleResultArray) => {
+    TMDBMovieFun.simpleResultArrayFiltered = simpleResultArray.filter((item) => {
+        return item.profile_path;
+    })
+
+    TMDBMovieFun.displayProfile(TMDBMovieFun.simpleResultArrayFiltered);
+}
+
 
 TMDBMovieFun.displayPosters = (simpleResultArray) => {
 
@@ -93,8 +118,12 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
             const poster = document.createElement('img');
             poster.id = simpleResultArray[i].id;
 
-            poster.src = `${basePosterURL}${simpleResultArray[i].poster_path}`;
-
+            if (simpleResultArray[i].poster_path === null) {
+                poster.src = `https://www.movienewz.com/img/films/poster-holder.jpg`;
+                
+            } else {
+                poster.src = `${basePosterURL}${simpleResultArray[i].poster_path}`;
+            }
 
             listElement.append(poster);
             gallery.append(listElement);
@@ -103,7 +132,7 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
             // console.log(simpleResultArray);
 
             poster.addEventListener('click', function (event) {
-            console.log("try");
+            // console.log("try");
             // console.log(event);
             console.log(event.target);
             const chosenMovieID = event.target.attributes[0].nodeValue;
@@ -165,6 +194,81 @@ TMDBMovieFun.displayMovieDetail = (movieInfo) => {
             <p>${vote}</p>`;
 }
 
+
+TMDBMovieFun.displayProfile = (simpleResultArray) => {
+    const gallery = document.querySelector('.gallery');
+
+    // simpleResultArray.forEach((movie)=>{
+
+    for (let i = 0; i < simpleResultArray.length; i++) {
+
+
+        const listElement = document.createElement('li');
+
+
+        const profile = document.createElement('img');
+        profile.id = simpleResultArray[i].id;
+
+        if (simpleResultArray[i].profile_path === null) {
+            profile.src = `https://www.movienewz.com/img/films/poster-holder.jpg`;
+            
+        } else {
+            profile.src = `${basePosterURL}${simpleResultArray[i].profile_path}`;
+        }
+
+        listElement.append(profile);
+        gallery.append(listElement);
+
+        // Document.getElementsByClassName('i');
+        // console.log(simpleResultArray);
+
+        profile.addEventListener('click', function (event) {
+            // console.log("try");
+            // console.log(event);
+            console.log(event.target);
+
+            // const chosenMovieID = event.target.attributes[0].nodeValue;
+
+            // TMDBMovieFun.getMovieDetail(chosenMovieID);
+
+            
+        });
+
+    }
+}
+
+
+TMDBMovieFun.displayProfileDetail = (profileInfo) => {
+
+    document.getElementById('simpleSearch').innerHTML = "";
+
+    let name = profileInfo.name;
+    let title = movieInfo.original_title;
+    let posterURL = `${basePosterURL}${movieInfo.poster_path}`;
+    let release = movieInfo.release_date;
+    let runtime = movieInfo.runtime;
+    let vote = movieInfo.vote_average;
+    console.log(overview);
+
+
+
+    document.getElementById('simpleSearch').innerHTML = `
+            <img src="${posterURL}" alt="movie poster for ${title}" class = "detailMovie">
+            <h2>${title}</h2>
+            <p>${overview}</p>
+            <p>${release}</p>
+            <p>${runtime}</p>
+            <p>${vote}</p>`;
+
+}
+
+
+
+
+
+
+
+
 TMDBMovieFun.search = () => {
 
 
@@ -172,7 +276,24 @@ TMDBMovieFun.search = () => {
         event.preventDefault();
         document.getElementById('simpleSearch').innerHTML =`<ul class="gallery"></ul>`;
         let userSearch = document.querySelector('#userInput').value;
+
+        let userChoice = document.querySelector('#menuChoice').value;
+        console.log(userChoice);
+
+        if (userChoice === 'title') {
+            selectedURL = movieURL;
+        }
+
+        else if (userChoice === 'actor') {
+            selectedURL = peopleURL;
+        }
+
+        else {
+            selectedURL = undefined;
+        }
+
         TMDBMovieFun.getMovies(userSearch);
+        
     })
 }
 
