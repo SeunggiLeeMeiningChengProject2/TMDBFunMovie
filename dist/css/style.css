@@ -249,3 +249,11 @@ body {
   width: 40%;
   margin: 1rem;
 }
+
+.showGenre {
+  display: unset;
+}
+
+.hideGenre {
+  display: none;
+}
