@@ -51,7 +51,7 @@ TMDBMovieFun.getMovies = (userSearch) => {
                 // TMDBMovieFun.displayGenreMovies();
                 // console.log("genere")
             }
-            
+            console.log("hi");
             // TMDBMovieFun.displayPosters(jsonResponse.results);
             console.log(jsonResponse.results);
             // for (let i=0; i<jsonResponse.results.length ;i++){
