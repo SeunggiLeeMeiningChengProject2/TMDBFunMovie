@@ -1,8 +1,8 @@
 @import "partials/setup";
 @import "partials/variables";
 
-body {
-    background-color: $white;
+html{
+    background-color:indigo;
 }
 
 .wrapper {
@@ -15,7 +15,7 @@ body {
     list-style:none;
     display:flex;
     flex-wrap:wrap;
-    width:100vw;
+    width:70vw;
     img {
         width:40%;
         margin:1rem;
@@ -25,6 +25,25 @@ body {
 
 
 
+}
+
+header h1 {
+    text-align:center;
+}
+
+.searchFunction {
+    width: 55vw;
+}
+
+.searchFunction form {
+    margin-left:10vw;
+}
+
+.sideBar {
+    margin-left:2vw;
+    background-color: black;
+    width:20vw;
+    min-height:30vw;
 }
 
 // .genreChoice {
@@ -37,4 +56,8 @@ body {
 
 .hideGenre {
     display: none;
+}
+
+.flexContainer {
+    display:flex;
 }

@@ -5,58 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dist/css/style.css">
+    <script src="https://kit.fontawesome.com/12a501f4a0.js" crossorigin="anonymous"></script>
     <title>TMDB Movie Fun</title>
 </head>
 <body>
     <header>
         <h1>TMDB Movie Fun</h1>
     </header>
-
     <main>
-        <form>
-            <label></label>
-            <label for="menuChoice" class="sr-only">what search type do you want</label>
-            <select name="menuChoice" id="menuChoice">
-                <option value="title">search by movie title</option>
-                <option value="actor">search by actor/actress </option>
-                <option value="genre">search by genre</option>
-            </select>
-
-            <label for="genreChoice" class="sr-only">Select genre</label>
-            <select name="genreChoice" class="genreChoice hideGenre" id="genreChoice">
-                <option value="28">Action</option>
-                <option value="12">Adventure</option>
-                <option value="16">Animation</option>
-                <option value="35">Comedy</option>
-                <option value="80">Crime</option>
-                <option value="99">Documentary</option>
-                <option value="18">Drama</option>
-                <option value="10751">Family</option>
-                <option value="14">Fantasy</option>
-                <option value="36">Horror</option>
-                <option value="10402">Music</option>
-                <option value="9648">Mystery</option>
-                <option value="10749">Romance</option>
-                <option value="878">Science Fiction</option>
-                <option value="10770">TV Movie</option>
-                <option value="53">Thriller</option>
-                <option value="10752">War</option>
-                <option value="27">Weatern</option>
-            </select>
+        <div class ="flexContainer">
+            <section class="popularMovieBar">
+                <div class="sideBar">
+                    <p>TO WATCH LIST</p>
+                </div>
+            </section>
+        <section class="searchFunction">
+            <form>
+                <label></label>
+                <label for="menuChoice" class="sr-only">what search type do you want</label>
+                <select name="menuChoice" id="menuChoice">
+                    <option value="title">search by movie title</option>
+                    <option value="actor">search by actor/actress </option>
+                    <option value="genre">search by genre</option>
+                </select>
             
-            <label for='userInput' class='sr-only'>Search bar</label>
-            <input type='text' name="userInput" id='userInput'>
+                <label for="genreChoice" class="sr-only">Select genre</label>
+                <select name="genreChoice" class="genreChoice hideGenre" id="genreChoice">
+                    <option value="28">Action</option>
+                    <option value="12">Adventure</option>
+                    <option value="16">Animation</option>
+                    <option value="35">Comedy</option>
+                    <option value="80">Crime</option>
+                    <option value="99">Documentary</option>
+                    <option value="18">Drama</option>
+                    <option value="10751">Family</option>
+                    <option value="14">Fantasy</option>
+                    <option value="36">Horror</option>
+                    <option value="10402">Music</option>
+                    <option value="9648">Mystery</option>
+                    <option value="10749">Romance</option>
+                    <option value="878">Science Fiction</option>
+                    <option value="10770">TV Movie</option>
+                    <option value="53">Thriller</option>
+                    <option value="10752">War</option>
+                    <option value="27">Weatern</option>
+                </select>
+            
+                <label for='userInput' class='sr-only'>Search bar</label>
+                <input type='text' name="userInput" id='userInput'>
+            
+                <button type="submit">Search</button>
+            </form>
+                    <div id="simpleSearch">
+                        <ul class="gallery">
+                    
+                        </ul>
+                    </div>
+        </section>
 
-            <button type="submit">Search</button>
-        </form>
+        <section class="toWatchBar">
+            <div class="sideBar">
+                <ul class="toWatchList">
 
-
-        <div id="simpleSearch">
-            <ul class="gallery">
-                
-            </ul>
+                </ul>
+                <p>TO WATCH LIST</p>
+            </div>
+        </section>
         </div>
-
     </main>
 
 <script src="app.js"></script>
