@@ -1,5 +1,6 @@
 @import "partials/setup";
 @import "partials/variables";
+@import "partials/typography";
 
 html{
     background-color:#004EA8;
@@ -19,10 +20,14 @@ li {
     list-style:none;
 }
 
+p {
+    text-align: center;
+}
+
 .wrapper {
     margin: 0 auto;
     max-width: 1300px;
-    width: 100%;
+    width: 90%;
 }
 
 .gallery {
@@ -36,17 +41,35 @@ li {
     li {
         width:33%;
         padding: 0 1rem;
-
+        position: relative;
          img {
         width:80%;
-        
-    }
+        margin: 0 auto;
+        display: block;
+        margin-bottom:1rem;
+        }
+        .fa-star {
+            margin-left: 40%;
+            color: yellow;
+        }
+
+        // div {
+            
+        //     margin: 0 auto;
+        // }
 
         p {
-            margin-top:2rem;
+            margin-top:1rem;
             text-align: center;
             margin-bottom:2rem;
         }
+    }
+
+    .fa-plus-circle {
+        position: absolute;
+        top: 2rem;
+        left:5rem;
+        
     }
 
 }
@@ -85,18 +108,9 @@ header h1 {
     display: none;
 }
 
-// .flexContainer {
-//     display:flex;
-// }
 
 
-.toWatchList {
-    display:flex;
-    flex-wrap:wrap;
-    li {
-        margin: 1rem 2rem;
-    }
-}
+
 
 .carousel {
     width: 70vw;
@@ -105,10 +119,39 @@ header h1 {
     h2 {
         text-align: center;
     }
+    .fas {
+    // color: red;
+    position: absolute;
+    top: 2.1rem;
+    margin-left: 2rem;
+    
+    }
 
 }
+
+
 .responsive img{
 // width: 200px;
 height: 300px;
 margin: 0 10px;
 }
+
+
+.toWatchList {
+    display:flex;
+    flex-wrap:wrap;
+    li {
+        margin: 1rem 2rem;
+    }
+    position: relative;
+    
+    
+}
+
+.toWatchButton {
+    
+    all: unset
+    
+}
+
+

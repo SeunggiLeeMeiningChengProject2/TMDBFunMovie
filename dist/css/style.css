@@ -245,6 +245,26 @@ p {
 }
 
 html {
+  font-size: 62.5%;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p, input, label, select, button, span, .fas {
+  font-size: 2rem;
+}
+
+html {
   background-color: #004EA8;
   color: white;
 }
@@ -262,10 +282,14 @@ li {
   list-style: none;
 }
 
+p {
+  text-align: center;
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: 1300px;
-  width: 100%;
+  width: 90%;
 }
 
 .gallery {
@@ -279,16 +303,31 @@ li {
 .gallery li {
   width: 33%;
   padding: 0 1rem;
+  position: relative;
 }
 
 .gallery li img {
   width: 80%;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.gallery li .fa-star {
+  margin-left: 40%;
+  color: yellow;
 }
 
 .gallery li p {
-  margin-top: 2rem;
+  margin-top: 1rem;
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.gallery .fa-plus-circle {
+  position: absolute;
+  top: 2rem;
+  left: 5rem;
 }
 
 header h1 {
@@ -320,15 +359,6 @@ header h1 {
   display: none;
 }
 
-.toWatchList {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.toWatchList li {
-  margin: 1rem 2rem;
-}
-
 .carousel {
   width: 70vw;
   margin: 0 auto;
@@ -338,7 +368,27 @@ header h1 {
   text-align: center;
 }
 
+.carousel .fas {
+  position: absolute;
+  top: 2.1rem;
+  margin-left: 2rem;
+}
+
 .responsive img {
   height: 300px;
   margin: 0 10px;
+}
+
+.toWatchList {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.toWatchList li {
+  margin: 1rem 2rem;
+}
+
+.toWatchButton {
+  all: unset;
 }

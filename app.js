@@ -168,7 +168,7 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
         const listElement = document.createElement('li');
         const poster = document.createElement('img');
 
-
+        const rating = document.createElement('div');
         const description = document.createElement('p');
         description.textContent = simpleResultArray[i].title;
 
@@ -176,6 +176,10 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
 
         poster.src = `${basePosterURL}${simpleResultArray[i].poster_path}`;
         poster.alt = `the poster for ${simpleResultArray[i].title}`;
+
+        let vote = simpleResultArray[i].vote_average;
+        rating.innerHTML = `<i class="fas fa-star"></i> <span>${vote}</span>`;
+        
 
 
         const plusButton = document.createElement('button');
@@ -186,6 +190,7 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
 
 
         listElement.append(poster);
+        listElement.appendChild(rating);
         listElement.appendChild(description);
         gallery.append(listElement);
 
@@ -474,10 +479,7 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
 
         listElement.append(poster);
         listElement.appendChild(description);
-        
 
-        // Document.getElementsByClassName('i');
-        // console.log(simpleResultArray);
 
         poster.addEventListener('click', function (event) {
             // console.log("try");
