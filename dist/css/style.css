@@ -229,7 +229,8 @@ html {
 }
 
 html {
-  background-color: indigo;
+  background-color: #004EA8;
+  color: white;
 }
 
 .wrapper {
@@ -255,7 +256,7 @@ header h1 {
 }
 
 .searchFunction {
-  width: 55vw;
+  width: 52vw;
 }
 
 .searchFunction form {
@@ -277,6 +278,16 @@ header h1 {
   display: none;
 }
 
-.flexContainer {
-  display: flex;
+.carousel {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+.carousel h2 {
+  text-align: center;
+}
+
+.responsive img {
+  height: 300px;
+  margin: 0 10px;
 }

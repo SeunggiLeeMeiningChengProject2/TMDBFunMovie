@@ -2,7 +2,8 @@
 @import "partials/variables";
 
 html{
-    background-color:indigo;
+    background-color:#004EA8;
+    color: white;
 }
 
 .wrapper {
@@ -21,10 +22,6 @@ html{
         margin:1rem;
     }
 
-    
-
-
-
 }
 
 header h1 {
@@ -32,7 +29,7 @@ header h1 {
 }
 
 .searchFunction {
-    width: 55vw;
+    width: 52vw;
 }
 
 .searchFunction form {
@@ -58,6 +55,22 @@ header h1 {
     display: none;
 }
 
-.flexContainer {
-    display:flex;
+// .flexContainer {
+//     display:flex;
+// }
+
+
+.carousel {
+    width: 70vw;
+    // margin-left: 100px;
+    margin: 0 auto;
+    h2 {
+        text-align: center;
+    }
+
+}
+.responsive img{
+// width: 200px;
+height: 300px;
+margin: 0 10px;
 }
