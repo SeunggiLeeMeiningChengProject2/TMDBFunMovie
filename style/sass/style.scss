@@ -6,6 +6,19 @@ html{
     color: white;
 }
 
+h1 {
+    margin-top: 2rem;
+    margin-bottom:4rem;
+}
+
+h2 {
+    margin-bottom: 3rem;
+}
+
+li {
+    list-style:none;
+}
+
 .wrapper {
     margin: 0 auto;
     max-width: 1300px;
@@ -16,10 +29,24 @@ html{
     list-style:none;
     display:flex;
     flex-wrap:wrap;
-    width:70vw;
-    img {
-        width:40%;
-        margin:1rem;
+    justify-content:space-between;
+    width:100%;
+
+
+    li {
+        width:33%;
+        padding: 0 1rem;
+
+         img {
+        width:80%;
+        
+    }
+
+        p {
+            margin-top:2rem;
+            text-align: center;
+            margin-bottom:2rem;
+        }
     }
 
 }
@@ -29,18 +56,21 @@ header h1 {
 }
 
 .searchFunction {
-    width: 52vw;
+    width: 100%;
+    margin-top:5rem;
 }
 
 .searchFunction form {
-    margin-left:10vw;
+    margin-top:2rem;
+    text-align: center;
+    margin-bottom:2rem;
 }
 
-.sideBar {
-    margin-left:2vw;
-    background-color: black;
-    width:20vw;
-    min-height:30vw;
+.toWatchBar {
+    width:100%;
+    min-height:10rem;
+    background-color:black;
+
 }
 
 // .genreChoice {
@@ -59,6 +89,14 @@ header h1 {
 //     display:flex;
 // }
 
+
+.toWatchList {
+    display:flex;
+    flex-wrap:wrap;
+    li {
+        margin: 1rem 2rem;
+    }
+}
 
 .carousel {
     width: 70vw;
