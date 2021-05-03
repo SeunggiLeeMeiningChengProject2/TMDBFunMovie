@@ -1,10 +1,10 @@
-const apiKey ='d8135c763a58289c458ea2f5c9b1d7a4';
+const apiKey = 'd8135c763a58289c458ea2f5c9b1d7a4';
 
 const TMDBMovieFun = {};
 
 const baseURL = 'https://api.themoviedb.org/3'
 const basePosterURL = 'https://image.tmdb.org/t/p/w500/';
-const movieRoute ='/search/movie';
+const movieRoute = '/search/movie';
 const peopleRoute = '/search/person';
 
 const genreRoute = `/discover/movie`
@@ -19,12 +19,12 @@ let selectedURL = undefined;
 TMDBMovieFun.getMovies = (userSearch) => {
 
     const url = new URL(selectedURL);
-    
+
 
     url.search = new URLSearchParams({
         api_key: apiKey,
         query: userSearch,
-        
+
     })
 
     console.log(url);
@@ -47,7 +47,7 @@ TMDBMovieFun.getMovies = (userSearch) => {
                 // let genreChoice = document.querySelector('#genreChoice').value;
                 TMDBMovieFun.getGenreMovies();
 
-                
+
                 // TMDBMovieFun.displayGenreMovies();
                 // console.log("genere")
             }
@@ -61,7 +61,7 @@ TMDBMovieFun.getMovies = (userSearch) => {
             // let title = jsonResponse.results[0].original_title;
             // let poster = jsonResponse.results[0].poster_path;
             // let vote = jsonResponse.results[0].vote_average;
-    })
+        })
 
 }
 
@@ -96,9 +96,9 @@ TMDBMovieFun.getGenreMovies = () => {
             console.log('hi');
             console.log(jsonResponse.results);
             TMDBMovieFun.displayGenreMovies(jsonResponse.results);
-        // console.log("genere")
-            })
-        
+            // console.log("genere")
+        })
+
 }
 
 
@@ -133,7 +133,7 @@ TMDBMovieFun.displayGenreMovies = (simpleResultArray) => {
             const chosenMovieID = event.target.attributes[0].nodeValue;
 
             TMDBMovieFun.getMovieDetail(chosenMovieID);
-            
+
         });
 
     }
@@ -163,35 +163,35 @@ TMDBMovieFun.profileFilter = (simpleResultArray) => {
 TMDBMovieFun.displayPosters = (simpleResultArray) => {
     const gallery = document.querySelector('.gallery');
     // simpleResultArray.forEach((movie)=>{
-        for (let i = 0; i < simpleResultArray.length; i++) {
-            const listElement = document.createElement('li');
-            const poster = document.createElement('img');
+    for (let i = 0; i < simpleResultArray.length; i++) {
+        const listElement = document.createElement('li');
+        const poster = document.createElement('img');
 
 
-            const description = document.createElement('p');
-            description.textContent = simpleResultArray[i].title;
+        const description = document.createElement('p');
+        description.textContent = simpleResultArray[i].title;
 
-            poster.id = simpleResultArray[i].id;
+        poster.id = simpleResultArray[i].id;
 
-            poster.src = `${basePosterURL}${simpleResultArray[i].poster_path}`;
-            poster.alt = `the poster for ${simpleResultArray[i].title}`;
-            
-
-            const plusButton = document.createElement('button');
-            plusButton.className = `toWatchButton`;
-            plusButton.id = simpleResultArray[i].title;
-            plusButton.innerHTML = '<i class="fas fa-plus-circle"></i>';
-            listElement.appendChild(plusButton);
+        poster.src = `${basePosterURL}${simpleResultArray[i].poster_path}`;
+        poster.alt = `the poster for ${simpleResultArray[i].title}`;
 
 
-            listElement.append(poster);
-            listElement.appendChild(description);
-            gallery.append(listElement);
+        const plusButton = document.createElement('button');
+        plusButton.className = `toWatchButton`;
+        plusButton.id = simpleResultArray[i].title;
+        plusButton.innerHTML = '<i class="fas fa-plus-circle"></i>';
+        listElement.appendChild(plusButton);
 
-            // Document.getElementsByClassName('i');
-            // console.log(simpleResultArray);
 
-            poster.addEventListener('click', function (event) {
+        listElement.append(poster);
+        listElement.appendChild(description);
+        gallery.append(listElement);
+
+        // Document.getElementsByClassName('i');
+        // console.log(simpleResultArray);
+
+        poster.addEventListener('click', function (event) {
             // console.log("try");
             // console.log(event);
             console.log(event.target);
@@ -200,28 +200,28 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
             TMDBMovieFun.getMovieDetail(chosenMovieID);
         });
 
-            plusButton.addEventListener('click', function () {
+        plusButton.addEventListener('click', function () {
             const movieName = this.attributes[1].value;
             console.log(this);
             TMDBMovieFun.addWatchList(movieName);
         });
 
-        }
+    }
 
-        
-        // TMDBMovieFun.displayDetail(movie.id);
+
+    // TMDBMovieFun.displayDetail(movie.id);
     // });
 }
 
 TMDBMovieFun.addWatchList = (movieName) => {
 
     const movieList = document.createElement('li');
-    const toWatchList = document.getElementsByClassName('toWatchList');
+    const toWatchList = document.querySelector('.toWatchList');
     movieList.textContent = movieName;
-    console.log(movieList);
-    console.log(toWatchList);
+
+
     toWatchList.appendChild(movieList);
-    console.log(movieName);
+
 
 }
 
@@ -240,17 +240,17 @@ TMDBMovieFun.getMovieDetail = (chosenMovieID) => {
         return response.json();
     })
         .then((jsonResponse) => {
-            
+
             console.log(jsonResponse);
 
             TMDBMovieFun.displayMovieDetail(jsonResponse);
 
         });
-    
-    
-    }
 
-    TMDBMovieFun.getProfileDetail = (profileDetail) => {
+
+}
+
+TMDBMovieFun.getProfileDetail = (profileDetail) => {
     const detailedProfileURL = `https://api.themoviedb.org/3/person/${profileDetail}`;
     const url = new URL(detailedProfileURL);
     url.search = new URLSearchParams({
@@ -261,19 +261,19 @@ TMDBMovieFun.getMovieDetail = (chosenMovieID) => {
         return response.json();
     })
         .then((jsonResponse) => {
-            
+
             console.log(jsonResponse);
 
             TMDBMovieFun.displayProfileDetail(jsonResponse);
 
         });
-    
-    }
+
+}
 
 TMDBMovieFun.displayMovieDetail = (movieInfo) => {
-    
-    document.getElementById('simpleSearch').innerHTML ="";
-    
+
+    document.getElementById('simpleSearch').innerHTML = "";
+
     let title = movieInfo.title;
     let overview = movieInfo.overview;
     let posterURL = `${basePosterURL}${movieInfo.poster_path}`;
@@ -284,7 +284,7 @@ TMDBMovieFun.displayMovieDetail = (movieInfo) => {
 
 
 
-    document.getElementById('simpleSearch').innerHTML =`
+    document.getElementById('simpleSearch').innerHTML = `
             <img src="${posterURL}" alt="movie poster for ${title}" class = "detailMovie">
             <h2>${title}</h2>
             <p>${overview}</p>
@@ -309,20 +309,20 @@ TMDBMovieFun.displayProfile = (simpleResultArray) => {
 
 
         const profile = document.createElement('img');
-        
+
         profile.id = simpleResultArray[i].id;
 
         profile.src = `${basePosterURL}${simpleResultArray[i].profile_path}`;
         profile.alt = `the photo for ${simpleResultArray[i].name}`
 
-        
+
         // const plusButton = document.createElement('button');
         // plusButton.className = `toWatchButton`;
         // plusButton.id = simpleResultArray[i].id;
         // plusButton.innerHTML = '<i class="fas fa-plus-circle"></i>';
-        
 
-        
+
+
         listElement.append(profile);
         listElement.appendChild(description);
         // listElement.appendChild(plusButton);
@@ -343,7 +343,7 @@ TMDBMovieFun.displayProfile = (simpleResultArray) => {
 
             // TMDBMovieFun.getMovieDetail(chosenMovieID);
 
-            
+
         });
 
     }
@@ -359,11 +359,11 @@ TMDBMovieFun.displayProfileDetail = (profileInfo) => {
     let birthday = profileInfo.birthday;
     let profilePhoto = `${basePosterURL}${profileInfo.profile_path}`;
     let gender = profileInfo.gender;
-    
+
     if (gender === 1) {
         gender = "female";
     }
-    else if (gender === 2){
+    else if (gender === 2) {
         gender = "male";
     }
     else {
@@ -378,7 +378,7 @@ TMDBMovieFun.displayProfileDetail = (profileInfo) => {
     console.log("biography");
     console.log(biography);
 
-    
+
     // let knownMovies = [knownForArray[0].original_title, knownForArray[1].original_title, knownForArray[2].original_title];
     // let knownForArray = profileInfo.known_for;
     // console.log(profileInfo);
@@ -403,9 +403,9 @@ TMDBMovieFun.displayProfileDetail = (profileInfo) => {
 TMDBMovieFun.search = () => {
 
 
-    document.querySelector('form').addEventListener('submit', function(event){
+    document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
-        document.getElementById('simpleSearch').innerHTML =`<ul class="gallery"></ul>`;
+        document.getElementById('simpleSearch').innerHTML = `<ul class="gallery"></ul>`;
         let userSearch = document.querySelector('#userInput').value;
 
         let userChoice = document.querySelector('#menuChoice').value;
@@ -424,14 +424,63 @@ TMDBMovieFun.search = () => {
         }
 
         TMDBMovieFun.getMovies(userSearch);
-        
+
     })
 }
 
 
+
+
+
+
+
 TMDBMovieFun.init = () => {
 
-    TMDBMovieFun.search();
+    
+
+TMDBMovieFun.search();
 }
 
 TMDBMovieFun.init();
+
+
+$(document).ready(function () {
+
+
+    $('.responsive').slick({
+        dots: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
+});
+
