@@ -228,8 +228,8 @@ html {
   overflow: hidden;
 }
 
-body {
-  background-color: #FAFAFA;
+html {
+  background-color: indigo;
 }
 
 .wrapper {
@@ -242,12 +242,31 @@ body {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  width: 100vw;
+  width: 70vw;
 }
 
 .gallery img {
   width: 40%;
   margin: 1rem;
+}
+
+header h1 {
+  text-align: center;
+}
+
+.searchFunction {
+  width: 55vw;
+}
+
+.searchFunction form {
+  margin-left: 10vw;
+}
+
+.sideBar {
+  margin-left: 2vw;
+  background-color: black;
+  width: 20vw;
+  min-height: 30vw;
 }
 
 .showGenre {
@@ -256,4 +275,8 @@ body {
 
 .hideGenre {
   display: none;
+}
+
+.flexContainer {
+  display: flex;
 }

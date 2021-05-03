@@ -177,6 +177,13 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
             poster.alt = `the poster for ${simpleResultArray[i].title}`;
             
 
+            const plusButton = document.createElement('button');
+            plusButton.className = `toWatchButton`;
+            plusButton.id = simpleResultArray[i].title;
+            plusButton.innerHTML = '<i class="fas fa-plus-circle"></i>';
+            listElement.appendChild(plusButton);
+
+
             listElement.append(poster);
             listElement.appendChild(description);
             gallery.append(listElement);
@@ -193,14 +200,33 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
             TMDBMovieFun.getMovieDetail(chosenMovieID);
         });
 
+            plusButton.addEventListener('click', function () {
+            const movieName = this.attributes[1].value;
+            console.log(this);
+            TMDBMovieFun.addWatchList(movieName);
+        });
+
         }
 
         
         // TMDBMovieFun.displayDetail(movie.id);
     // });
 }
-// TMDBMovieFun.addEventListener = 
-//TMDBMovieFun.displayDetail = (movieID) => {
+
+TMDBMovieFun.addWatchList = (movieName) => {
+
+    const movieList = document.createElement('li');
+    const toWatchList = document.getElementsByClassName('toWatchList');
+    movieList.textContent = movieName;
+    console.log(movieList);
+    console.log(toWatchList);
+    toWatchList.appendChild(movieList);
+    console.log(movieName);
+
+}
+
+
+
 TMDBMovieFun.getMovieDetail = (chosenMovieID) => {
     const detailedMovieURL = `https://api.themoviedb.org/3/movie/${chosenMovieID}`;
 
@@ -283,15 +309,23 @@ TMDBMovieFun.displayProfile = (simpleResultArray) => {
 
 
         const profile = document.createElement('img');
+        
         profile.id = simpleResultArray[i].id;
 
         profile.src = `${basePosterURL}${simpleResultArray[i].profile_path}`;
         profile.alt = `the photo for ${simpleResultArray[i].name}`
 
         
-        ;
+        // const plusButton = document.createElement('button');
+        // plusButton.className = `toWatchButton`;
+        // plusButton.id = simpleResultArray[i].id;
+        // plusButton.innerHTML = '<i class="fas fa-plus-circle"></i>';
+        
+
+        
         listElement.append(profile);
         listElement.appendChild(description);
+        // listElement.appendChild(plusButton);
         gallery.append(listElement);
 
         // Document.getElementsByClassName('i');
@@ -314,6 +348,8 @@ TMDBMovieFun.displayProfile = (simpleResultArray) => {
 
     }
 }
+
+
 
 
 TMDBMovieFun.displayProfileDetail = (profileInfo) => {
