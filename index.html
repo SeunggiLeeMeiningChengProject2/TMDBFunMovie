@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./dist/css/style.css">
     
     <script src="https://kit.fontawesome.com/12a501f4a0.js" crossorigin="anonymous"></script>
@@ -52,9 +55,9 @@
 
                     <label for="menuChoice" class="sr-only">what search type do you want</label>
                     <select name="menuChoice" id="menuChoice">
-                        <option value="title">search by movie title</option>
-                        <option value="actor">search by actor/actress </option>
-                        <option value="genre">search by genre</option>
+                        <option value="title">Search by movie title</option>
+                        <option value="actor">Search by actor/actress </option>
+                        <option value="genre">Search by genre</option>
                     </select>
 
                     <label for="genreChoice" class="sr-only">Select genre</label>
@@ -80,9 +83,9 @@
                     </select>
 
                     <label for='userInput' class='sr-only'>Search bar</label>
-                    <input type='text' name="userInput" id='userInput'>
+                    <input type='text' name="userInput" id='userInput' placeholder="Search TMDB">
 
-                    <button type="submit">Search</button>
+                    <button type="submit" class="submitButton">Search</button>
                 </form>
                 <div id="simpleSearch" class="result">
                     <ul class="gallery">

@@ -3,7 +3,7 @@
 @import "partials/typography";
 
 //#004EA8
-
+//#4682B4
 html{
     background-color:black;
     color: white;
@@ -12,6 +12,9 @@ html{
 h1 {
     margin-top: 2rem;
     margin-bottom:4rem;
+    color: yellow;
+    font-family: $headingFont;
+    text-transform: uppercase;
 }
 
 h2 {
@@ -58,11 +61,11 @@ img {
         width:80%;
         display: block;
         margin-bottom:1rem;
-        border: 2px solid yellow;
+        border: 2px solid $borderColor;
         }
         .fa-star {
             margin-left: 40%;
-            color: yellow;
+            color: $borderColor;
         }
 
         // div {
@@ -101,7 +104,25 @@ header h1 {
     margin-bottom:2rem;
 }
 
+option {
+    color: white;
+    background-color: black;
+}
 
+select, input, .submitButton{
+    border: 2px solid yellow;
+    font-size: 3rem;
+    color: white;
+    background-color: black;
+}
+.submitButton {
+    border-radius: 10%;
+}
+
+//  {
+//     color: white;
+//     background-color: black;
+// }
 
 // .genreChoice {
 //     display: none;
@@ -111,7 +132,7 @@ header h1 {
     display: unset;
 }
 
-.hideGenre {
+.hideGenre, .hideInput {
     display: none;
 }
 
@@ -129,7 +150,7 @@ header h1 {
 
     li img{
         position: relative;
-        border: 2px solid yellow;
+        border: 2px solid $borderColor;
     }
 
     .fas {
@@ -152,7 +173,7 @@ height: 300px;
 .toWatchBar {
     width:100%;
     min-height:15rem;
-    border: 2px solid yellow;
+    border: 2px solid $borderColor;
 }
 
 
@@ -162,7 +183,7 @@ height: 300px;
     flex-wrap:wrap;
     li {
         margin: 1rem 2rem;
-        color:yellow;
+        color:$borderColor;
         font-size:2rem;
     }
     position: relative;
@@ -183,7 +204,7 @@ height: 300px;
     .fas {
         margin:1rem 1rem;
         margin-left:47.2%;
-        color:yellow;
+        color:$borderColor;
         
     }
 }

@@ -272,6 +272,9 @@ html {
 h1 {
   margin-top: 2rem;
   margin-bottom: 4rem;
+  color: yellow;
+  font-family: "Faster One", cursive;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -320,12 +323,12 @@ img {
   width: 80%;
   display: block;
   margin-bottom: 1rem;
-  border: 2px solid yellow;
+  border: 2px solid goldenrod;
 }
 
 .gallery li .fa-star {
   margin-left: 40%;
-  color: yellow;
+  color: goldenrod;
 }
 
 .gallery li p {
@@ -355,11 +358,27 @@ header h1 {
   margin-bottom: 2rem;
 }
 
+option {
+  color: white;
+  background-color: black;
+}
+
+select, input, .submitButton {
+  border: 2px solid yellow;
+  font-size: 3rem;
+  color: white;
+  background-color: black;
+}
+
+.submitButton {
+  border-radius: 10%;
+}
+
 .showGenre {
   display: unset;
 }
 
-.hideGenre {
+.hideGenre, .hideInput {
   display: none;
 }
 
@@ -374,7 +393,7 @@ header h1 {
 
 .carousel li img {
   position: relative;
-  border: 2px solid yellow;
+  border: 2px solid goldenrod;
 }
 
 .carousel .fas {
@@ -391,7 +410,7 @@ header h1 {
 .toWatchBar {
   width: 100%;
   min-height: 15rem;
-  border: 2px solid yellow;
+  border: 2px solid goldenrod;
 }
 
 .toWatchList {
@@ -402,7 +421,7 @@ header h1 {
 
 .toWatchList li {
   margin: 1rem 2rem;
-  color: yellow;
+  color: goldenrod;
   font-size: 2rem;
 }
 
@@ -418,7 +437,7 @@ header h1 {
 .result .fas {
   margin: 1rem 1rem;
   margin-left: 47.2%;
-  color: yellow;
+  color: goldenrod;
 }
 
 @media (max-width: 1650px) {
