@@ -69,6 +69,7 @@ document.querySelector('#menuChoice').addEventListener('change', () => {
     let userChoice = document.querySelector('#menuChoice').value;
     if (userChoice === "genre") {
         document.querySelector('#genreChoice').className = 'showGenre';
+        document.querySelector('#userInput').className = 'hideInput';
     } else {
         document.querySelector('#genreChoice').className = 'hideGenre';
     }
