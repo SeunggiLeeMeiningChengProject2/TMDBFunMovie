@@ -124,15 +124,8 @@ TMDBMovieFun.displayGenreMovies = (simpleResultArray) => {
         listElement.appendChild(description);
         gallery.append(listElement);
 
-        // Document.getElementsByClassName('i');
-        // console.log(simpleResultArray);
-
         poster.addEventListener('click', function (event) {
-            // console.log("try");
-            // console.log(event);
-            console.log(event.target);
             const chosenMovieID = event.target.attributes[0].nodeValue;
-
             TMDBMovieFun.getMovieDetail(chosenMovieID);
 
         });
@@ -193,13 +186,7 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
         listElement.appendChild(rating);
         listElement.appendChild(description);
         gallery.append(listElement);
-
-        // Document.getElementsByClassName('i');
-        // console.log(simpleResultArray);
-
         poster.addEventListener('click', function (event) {
-            // console.log("try");
-            // console.log(event);
             console.log(event.target);
             const chosenMovieID = event.target.attributes[0].nodeValue;
 
@@ -213,10 +200,6 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
         });
 
     }
-
-
-    // TMDBMovieFun.displayDetail(movie.id);
-    // });
 }
 
 TMDBMovieFun.addWatchList = (movieName) => {
@@ -224,8 +207,6 @@ TMDBMovieFun.addWatchList = (movieName) => {
     const movieList = document.createElement('li');
     const toWatchList = document.querySelector('.toWatchList');
     movieList.textContent = movieName;
-
-
     toWatchList.appendChild(movieList);
 
 
@@ -246,9 +227,6 @@ TMDBMovieFun.getMovieDetail = (chosenMovieID) => {
         return response.json();
     })
         .then((jsonResponse) => {
-
-            console.log(jsonResponse);
-
             TMDBMovieFun.displayMovieDetail(jsonResponse);
 
         });
@@ -306,8 +284,6 @@ TMDBMovieFun.displayMovieDetail = (movieInfo) => {
 TMDBMovieFun.displayProfile = (simpleResultArray) => {
     const gallery = document.querySelector('.gallery');
 
-    // simpleResultArray.forEach((movie)=>{
-
     for (let i = 0; i < simpleResultArray.length; i++) {
 
 
@@ -315,30 +291,16 @@ TMDBMovieFun.displayProfile = (simpleResultArray) => {
 
         const description = document.createElement('p');
         description.textContent = simpleResultArray[i].name;
-
-
         const profile = document.createElement('img');
-
         profile.id = simpleResultArray[i].id;
-
         profile.src = `${basePosterURL}${simpleResultArray[i].profile_path}`;
         profile.alt = `the photo for ${simpleResultArray[i].name}`
-
-
-        // const plusButton = document.createElement('button');
-        // plusButton.className = `toWatchButton`;
-        // plusButton.id = simpleResultArray[i].id;
-        // plusButton.innerHTML = '<i class="fas fa-plus-circle"></i>';
 
 
 
         listElement.append(profile);
         listElement.appendChild(description);
-        // listElement.appendChild(plusButton);
         gallery.append(listElement);
-
-        // Document.getElementsByClassName('i');
-        // console.log(simpleResultArray);
 
         profile.addEventListener('click', function (event) {
             console.log(event.target);
