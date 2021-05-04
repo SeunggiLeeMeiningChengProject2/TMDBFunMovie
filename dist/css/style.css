@@ -265,7 +265,7 @@ p, input, label, select, button, span, .fas {
 }
 
 html {
-  background-color: #004EA8;
+  background-color: black;
   color: white;
 }
 
@@ -276,6 +276,11 @@ h1 {
 
 h2 {
   margin-bottom: 3rem;
+  text-align: center;
+}
+
+.popularMovies h2 {
+  color: #9c2d2d;
 }
 
 li {
@@ -286,10 +291,15 @@ p {
   text-align: center;
 }
 
+img {
+  display: block;
+  margin: 0 auto;
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: 1300px;
-  width: 90%;
+  width: 95%;
 }
 
 .gallery {
@@ -308,9 +318,9 @@ p {
 
 .gallery li img {
   width: 80%;
-  margin: 0 auto;
   display: block;
   margin-bottom: 1rem;
+  border: 2px solid yellow;
 }
 
 .gallery li .fa-star {
@@ -327,7 +337,7 @@ p {
 .gallery .fa-plus-circle {
   position: absolute;
   top: 2rem;
-  left: 5rem;
+  left: 15%;
 }
 
 header h1 {
@@ -343,12 +353,6 @@ header h1 {
   margin-top: 2rem;
   text-align: center;
   margin-bottom: 2rem;
-}
-
-.toWatchBar {
-  width: 100%;
-  min-height: 10rem;
-  background-color: black;
 }
 
 .showGenre {
@@ -368,15 +372,26 @@ header h1 {
   text-align: center;
 }
 
+.carousel li img {
+  position: relative;
+  border: 2px solid yellow;
+}
+
 .carousel .fas {
   position: absolute;
   top: 2.1rem;
-  margin-left: 2rem;
+  margin-left: 7.2rem;
+  z-index: 5;
 }
 
 .responsive img {
   height: 300px;
-  margin: 0 10px;
+}
+
+.toWatchBar {
+  width: 100%;
+  min-height: 15rem;
+  border: 2px solid yellow;
 }
 
 .toWatchList {
@@ -387,8 +402,57 @@ header h1 {
 
 .toWatchList li {
   margin: 1rem 2rem;
+  color: yellow;
+  font-size: 2rem;
 }
 
 .toWatchButton {
   all: unset;
+}
+
+.result p {
+  max-width: 50rem;
+  margin: 2rem auto;
+}
+
+.result .fas {
+  margin: 1rem 1rem;
+  margin-left: 47%;
+  color: yellow;
+}
+
+@media (max-width: 1650px) {
+  .carousel .fas {
+    margin-left: 6rem;
+  }
+}
+
+@media (max-width: 1470px) {
+  .carousel .fas {
+    margin-left: 4.2rem;
+  }
+}
+
+@media (max-width: 1235px) {
+  .carousel .fas {
+    margin-left: 6rem;
+  }
+}
+
+@media (max-width: 1165px) {
+  .carousel .fas {
+    margin-left: 6rem;
+  }
+}
+
+@media (max-width: 1026px) {
+  .carousel .fas {
+    margin-left: 3rem;
+  }
+}
+
+@media (max-width: 895px) {
+  .carousel .fas {
+    margin-left: 7rem;
+  }
 }

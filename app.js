@@ -292,11 +292,14 @@ TMDBMovieFun.displayMovieDetail = (movieInfo) => {
 
     document.getElementById('simpleSearch').innerHTML = `
             <img src="${posterURL}" alt="movie poster for ${title}" class = "detailMovie">
+            <i class="fas fa-star"></i><span>${vote}</span>
             <h2>${title}</h2>
-            <p>${overview}</p>
-            <p>${release}</p>
-            <p>${runtime}</p>
-            <p>${vote}</p>`;
+            <p>Release date: ${release}</p>
+            <p>Runtime: ${runtime} minutes</p>
+            <p>${overview}</p>`;
+
+
+            document.getElementById("simpleSearch").scrollIntoView({behavior: 'smooth'});
 }
 
 
@@ -402,6 +405,9 @@ TMDBMovieFun.displayProfileDetail = (profileInfo) => {
             <p>${biography}</p>
             `;
 
+
+            document.getElementById("simpleSearch").scrollIntoView({behavior: 'smooth'});
+
 }
 
 
@@ -486,8 +492,10 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
             // console.log(event);
             console.log(event.target);
             const chosenMovieID = event.target.attributes[0].nodeValue;
-
             TMDBMovieFun.getMovieDetail(chosenMovieID);
+
+            
+
         });
 
         plusButton.addEventListener('click', function () {
@@ -513,7 +521,7 @@ $('.responsive').slick({
         slidesToScroll: 6,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1240,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
@@ -522,7 +530,7 @@ $('.responsive').slick({
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 895,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2

@@ -2,8 +2,10 @@
 @import "partials/variables";
 @import "partials/typography";
 
+//#004EA8
+
 html{
-    background-color:#004EA8;
+    background-color:black;
     color: white;
 }
 
@@ -14,6 +16,11 @@ h1 {
 
 h2 {
     margin-bottom: 3rem;
+    text-align: center;
+}
+
+.popularMovies h2{
+    color:#9c2d2d;
 }
 
 li {
@@ -24,10 +31,15 @@ p {
     text-align: center;
 }
 
+img {
+    display:block;
+    margin: 0 auto;
+}
+
 .wrapper {
     margin: 0 auto;
     max-width: 1300px;
-    width: 90%;
+    width: 95%;
 }
 
 .gallery {
@@ -44,9 +56,9 @@ p {
         position: relative;
          img {
         width:80%;
-        margin: 0 auto;
         display: block;
         margin-bottom:1rem;
+        border: 2px solid yellow;
         }
         .fa-star {
             margin-left: 40%;
@@ -68,7 +80,7 @@ p {
     .fa-plus-circle {
         position: absolute;
         top: 2rem;
-        left:5rem;
+        left:15%;
         
     }
 
@@ -89,12 +101,7 @@ header h1 {
     margin-bottom:2rem;
 }
 
-.toWatchBar {
-    width:100%;
-    min-height:10rem;
-    background-color:black;
 
-}
 
 // .genreChoice {
 //     display: none;
@@ -119,12 +126,18 @@ header h1 {
     h2 {
         text-align: center;
     }
+
+    li img{
+        position: relative;
+        border: 2px solid yellow;
+    }
+
     .fas {
     // color: red;
     position: absolute;
     top: 2.1rem;
-    margin-left: 2rem;
-    
+    margin-left:7.2rem;
+    z-index:5;
     }
 
 }
@@ -133,8 +146,18 @@ header h1 {
 .responsive img{
 // width: 200px;
 height: 300px;
-margin: 0 10px;
+
 }
+
+.toWatchBar {
+    width:100%;
+    min-height:15rem;
+    // background-color:blue;
+    border: 2px solid yellow;
+
+
+}
+
 
 
 .toWatchList {
@@ -142,6 +165,9 @@ margin: 0 10px;
     flex-wrap:wrap;
     li {
         margin: 1rem 2rem;
+        // border: 2px solid yellow;
+        color:yellow;
+        font-size:2rem;
     }
     position: relative;
     
@@ -154,4 +180,19 @@ margin: 0 10px;
     
 }
 
+.result {
+    p{
+        max-width:50rem;
+        margin: 2rem auto;
+    }
+    
+    .fas {
+        margin:1rem 1rem;
+        margin-left:47%;
+        color:yellow;
+        
+    }
+}
 
+
+@import "partials/mediaQuery"
