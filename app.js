@@ -341,16 +341,11 @@ TMDBMovieFun.displayProfile = (simpleResultArray) => {
         // console.log(simpleResultArray);
 
         profile.addEventListener('click', function (event) {
-            // console.log("try");
-            // console.log(event);
             console.log(event.target);
 
             const chosenProfile = event.target.attributes[0].nodeValue;
-            console.log(chosenProfile);
             TMDBMovieFun.getProfileDetail(chosenProfile)
-            // const chosenMovieID = event.target.attributes[0].nodeValue;
 
-            // TMDBMovieFun.getMovieDetail(chosenMovieID);
 
 
         });
