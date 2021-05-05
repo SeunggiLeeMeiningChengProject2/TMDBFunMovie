@@ -61,6 +61,19 @@ TMDBMovieFun.getMovies = (userSearch) => {
             // let title = jsonResponse.results[0].original_title;
             // let poster = jsonResponse.results[0].poster_path;
             // let vote = jsonResponse.results[0].vote_average;
+            if (jsonResponse.results.length === 0) {
+                const emptyResult = document.createElement('img');
+                emptyResult.className = "emptyResultImg";
+                emptyResult.src = "./assets/sorry-no-results-found.png";
+                emptyResult.alt = "No result found";
+
+                // emptyResult.innerHTML = `<i class="fas fa-search"></i> <p>No result found</p>`;
+
+                const result = document.querySelector('#simpleSearch');
+                result.appendChild(emptyResult);
+            }
+            
+
         })
 
 }
@@ -398,6 +411,8 @@ TMDBMovieFun.search = () => {
 
         TMDBMovieFun.getMovies(userSearch);
 
+        
+
     })
 }
 
@@ -451,7 +466,7 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
         poster.addEventListener('click', function (event) {
             // console.log("try");
             // console.log(event);
-            console.log(event.target);
+            // console.log(event.target);
             const chosenMovieID = event.target.attributes[0].nodeValue;
             TMDBMovieFun.getMovieDetail(chosenMovieID);
 
@@ -461,7 +476,7 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
 
         plusButton.addEventListener('click', function () {
             const movieName = this.attributes[1].value;
-            console.log(this);
+            // console.log(this);
             TMDBMovieFun.addWatchList(movieName);
         });
 
@@ -500,7 +515,7 @@ $('.responsive').slick({
                 }
             },
             {
-                breakpoint: 481,
+                breakpoint: 605,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1

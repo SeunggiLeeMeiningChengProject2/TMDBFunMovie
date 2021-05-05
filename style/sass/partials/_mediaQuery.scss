@@ -99,12 +99,16 @@
 
 }
 
+@media (max-width: 605px) {
+    
+
+    .carousel .fas {
+        margin-left:11.5rem;
+    }
+}
 @media (max-width: 480px) {
             
-    .carousel .fas {
-        margin-left:8rem;
-    }
-
+    
     .gallery li {
         width:100%;
 

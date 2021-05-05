@@ -372,6 +372,7 @@ select, input, .submitButton {
   font-size: 3rem;
   color: white;
   background-color: black;
+  padding: 1rem;
 }
 
 .submitButton {
@@ -453,6 +454,24 @@ select, input, .submitButton {
   border: 2px solid goldenrod;
 }
 
+.fa-search {
+  font-size: 8rem;
+  margin-left: 45%;
+}
+
+.emptyResultImg {
+  background-color: #222222;
+}
+
+footer {
+  margin-top: 2rem;
+  background-color: #222222;
+}
+
+footer p {
+  color: yellow;
+}
+
 @media (max-width: 1650px) {
   .carousel .fas {
     margin-left: 6rem;
@@ -526,10 +545,13 @@ select, input, .submitButton {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 605px) {
   .carousel .fas {
-    margin-left: 8rem;
+    margin-left: 11.5rem;
   }
+}
+
+@media (max-width: 480px) {
   .gallery li {
     width: 100%;
   }
