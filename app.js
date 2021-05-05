@@ -2,52 +2,49 @@ const apiKey = 'd8135c763a58289c458ea2f5c9b1d7a4';
 
 const TMDBMovieFun = {};
 
-const baseURL = 'https://api.themoviedb.org/3'
-const basePosterURL = 'https://image.tmdb.org/t/p/w500/';
-const movieRoute = '/search/movie';
-const peopleRoute = '/search/person';
+TMDBMovieFun.urlCollection = () => {
+    TMDBMovieFun.baseURL = 'https://api.themoviedb.org/3'
+    TMDBMovieFun.basePosterURL = 'https://image.tmdb.org/t/p/w500/';
+    TMDBMovieFun.movieRoute = '/search/movie';
+    TMDBMovieFun.peopleRoute = '/search/person';
+    TMDBMovieFun.genreRoute = `/discover/movie`;
+    TMDBMovieFun.movieURL = `${TMDBMovieFun.baseURL}${TMDBMovieFun.movieRoute}`;
+    TMDBMovieFun.peopleURL = `${TMDBMovieFun.baseURL}${TMDBMovieFun.peopleRoute}`;
+    TMDBMovieFun.genreURL = `${TMDBMovieFun.baseURL}${TMDBMovieFun.genreRoute}`;
+    TMDBMovieFun.selectedURL = undefined;
+}
 
-const genreRoute = `/discover/movie`
+TMDBMovieFun.selectorCollection = () => {
+    TMDBMovieFun.userChoice = document.querySelector('#menuChoice').value;
 
-const movieURL = `${baseURL}${movieRoute}`
-const peopleURL = `${baseURL}${peopleRoute}`
-const genreURL = `${baseURL}${genreRoute}`
-
-let selectedURL = undefined;
+}
 
 
 TMDBMovieFun.getMovies = (userSearch) => {
 
-    const url = new URL(selectedURL);
-
+    const url = new URL(TMDBMovieFun.selectedURL);
 
     url.search = new URLSearchParams({
         api_key: apiKey,
         query: userSearch,
-
     })
 
-    console.log(url);
-
     fetch(url).then((response) => {
-        // console.log(response.json());
         return response.json();
     })
         .then((jsonResponse) => {
-            console.log('hi');
-            let userChoice = document.querySelector('#menuChoice').value;
-
-            if (userChoice === "title") {
+            // let userChoice = document.querySelector('#menuChoice').value;
+            if (TMDBMovieFun.userChoice === "title") {
                 TMDBMovieFun.movieFilter(jsonResponse.results);
             }
-            else if (userChoice === "actor") {
+            else if (TMDBMovieFun.userChoice === "actor") {
                 TMDBMovieFun.profileFilter(jsonResponse.results);
             }
             else {
                 // let genreChoice = document.querySelector('#genreChoice').value;
                 TMDBMovieFun.getGenreMovies();
             }
-           
+
             if (jsonResponse.results.length === 0) {
                 const emptyResult = document.createElement('img');
                 emptyResult.className = "emptyResultImg";
@@ -60,27 +57,30 @@ TMDBMovieFun.getMovies = (userSearch) => {
                 result.appendChild(emptyResult);
             }
         })
-
 }
 
+
+
 document.querySelector('#menuChoice').addEventListener('change', () => {
-    let userChoice = document.querySelector('#menuChoice').value;
-    if (userChoice === "genre") {
+    TMDBMovieFun.userChoice = document.querySelector('#menuChoice').value;
+    if (TMDBMovieFun.userChoice === "genre") {
         document.querySelector('#genreChoice').className = 'showGenre';
         document.querySelector('#userInput').className = 'hideInput';
+        console.log(document.querySelector('#userInput'));
+        document.querySelector('#userInput').required = false;
     } else {
         document.querySelector('#genreChoice').className = 'hideGenre';
         document.querySelector('#userInput').className = 'showInput';
+        document.querySelector('#userInput').required = true;
     }
 })
 
 
 TMDBMovieFun.getGenreMovies = () => {
-    const url = new URL(selectedURL);
-    console.log(selectedURL);
+    const url = new URL(TMDBMovieFun.selectedURL);
+    // console.log(selectedURL);
     let userGenreChoice = document.querySelector('#genreChoice').value;
 
-    console.log(userGenreChoice);
     url.search = new URLSearchParams({
         api_key: apiKey,
         with_genres: userGenreChoice,
@@ -100,8 +100,6 @@ TMDBMovieFun.getGenreMovies = () => {
 }
 
 
-
-
 TMDBMovieFun.movieFilter = (simpleResultArray) => {
 
     TMDBMovieFun.simpleResultArrayFiltered = simpleResultArray.filter((item) => {
@@ -115,14 +113,12 @@ TMDBMovieFun.profileFilter = (simpleResultArray) => {
     TMDBMovieFun.simpleResultArrayFiltered = simpleResultArray.filter((item) => {
         return item.profile_path;
     })
-
     TMDBMovieFun.displayProfile(TMDBMovieFun.simpleResultArrayFiltered);
 }
 
-
 TMDBMovieFun.displayPosters = (simpleResultArray) => {
     const gallery = document.querySelector('.gallery');
-    // simpleResultArray.forEach((movie)=>{
+    
     for (let i = 0; i < simpleResultArray.length; i++) {
         const listElement = document.createElement('li');
         const poster = document.createElement('img');
@@ -133,7 +129,7 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
 
         poster.id = simpleResultArray[i].id;
 
-        poster.src = `${basePosterURL}${simpleResultArray[i].poster_path}`;
+        poster.src = `${TMDBMovieFun.basePosterURL}${simpleResultArray[i].poster_path}`;
         poster.alt = `the poster for ${simpleResultArray[i].title}`;
 
         let vote = simpleResultArray[i].vote_average;
@@ -189,12 +185,8 @@ TMDBMovieFun.addWatchList = (movieName) => {
             return;
         }
     }
-
     toWatchList.appendChild(movieList);
-
 }
-
-
 
 TMDBMovieFun.getMovieDetail = (chosenMovieID) => {
     const detailedMovieURL = `https://api.themoviedb.org/3/movie/${chosenMovieID}`;
@@ -210,7 +202,6 @@ TMDBMovieFun.getMovieDetail = (chosenMovieID) => {
     })
         .then((jsonResponse) => {
             TMDBMovieFun.displayMovieDetail(jsonResponse);
-
         });
 }
 
@@ -225,11 +216,7 @@ TMDBMovieFun.getProfileDetail = (profileDetail) => {
         return response.json();
     })
         .then((jsonResponse) => {
-
-            console.log(jsonResponse);
-
             TMDBMovieFun.displayProfileDetail(jsonResponse);
-
         });
 
 }
@@ -240,11 +227,10 @@ TMDBMovieFun.displayMovieDetail = (movieInfo) => {
 
     let title = movieInfo.title;
     let overview = movieInfo.overview;
-    let posterURL = `${basePosterURL}${movieInfo.poster_path}`;
+    let posterURL = `${TMDBMovieFun.basePosterURL}${movieInfo.poster_path}`;
     let release = movieInfo.release_date;
     let runtime = movieInfo.runtime;
     let vote = movieInfo.vote_average;
-    console.log(overview);
 
     document.getElementById('simpleSearch').innerHTML = `
             <img src="${posterURL}" alt="movie poster for ${title}" class = "detailMovie">
@@ -254,8 +240,7 @@ TMDBMovieFun.displayMovieDetail = (movieInfo) => {
             <p>Runtime: ${runtime} minutes</p>
             <p>${overview}</p>`;
 
-
-            document.getElementById("simpleSearch").scrollIntoView({behavior: 'smooth'});
+    document.getElementById("simpleSearch").scrollIntoView({behavior: 'smooth'});
 }
 
 
@@ -264,17 +249,13 @@ TMDBMovieFun.displayProfile = (simpleResultArray) => {
 
     for (let i = 0; i < simpleResultArray.length; i++) {
 
-
         const listElement = document.createElement('li');
-
         const description = document.createElement('p');
         description.textContent = simpleResultArray[i].name;
         const profile = document.createElement('img');
         profile.id = simpleResultArray[i].id;
-        profile.src = `${basePosterURL}${simpleResultArray[i].profile_path}`;
+        profile.src = `${TMDBMovieFun.basePosterURL}${simpleResultArray[i].profile_path}`;
         profile.alt = `the photo for ${simpleResultArray[i].name}`
-
-
 
         listElement.append(profile);
         listElement.appendChild(description);
@@ -283,14 +264,11 @@ TMDBMovieFun.displayProfile = (simpleResultArray) => {
         profile.addEventListener('click', function (event) {
             console.log(event.target);
 
-            const chosenProfile = event.target.attributes[0].nodeValue;
-            TMDBMovieFun.getProfileDetail(chosenProfile)
+        const chosenProfile = event.target.attributes[0].nodeValue;
+        TMDBMovieFun.getProfileDetail(chosenProfile)
         });
-
     }
 }
-
-
 
 
 TMDBMovieFun.displayProfileDetail = (profileInfo) => {
@@ -298,7 +276,7 @@ TMDBMovieFun.displayProfileDetail = (profileInfo) => {
     document.getElementById('simpleSearch').innerHTML = "";
     let name = profileInfo.name;
     let birthday = profileInfo.birthday;
-    let profilePhoto = `${basePosterURL}${profileInfo.profile_path}`;
+    let profilePhoto = `${TMDBMovieFun.basePosterURL}${profileInfo.profile_path}`;
     let gender = profileInfo.gender;
 
     if (gender === 1) {
@@ -316,18 +294,6 @@ TMDBMovieFun.displayProfileDetail = (profileInfo) => {
         placeOfBirth = "not available"
     }
 
-    console.log("biography");
-    console.log(biography);
-
-
-    // let knownMovies = [knownForArray[0].original_title, knownForArray[1].original_title, knownForArray[2].original_title];
-    // let knownForArray = profileInfo.known_for;
-    // console.log(profileInfo);
-    // console.log(knownForArray);
-    // knownForArray.forEach((movie) => {
-    //     return movie.original_title
-    // });
-
     document.getElementById('simpleSearch').innerHTML = `
             <img src="${profilePhoto}" alt="profile picture for ${name}" class = "detailMovie">
             <h2>${name}</h2>
@@ -337,39 +303,34 @@ TMDBMovieFun.displayProfileDetail = (profileInfo) => {
             <p>${biography}</p>
             `;
 
-
-            document.getElementById("simpleSearch").scrollIntoView({behavior: 'smooth'});
-
+    document.getElementById("simpleSearch").scrollIntoView({behavior: 'smooth'});
 }
 
 
 
 TMDBMovieFun.search = () => {
 
-
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
         document.getElementById('simpleSearch').innerHTML = `<ul class="gallery"></ul>`;
         let userSearch = document.querySelector('#userInput').value;
 
-        let userChoice = document.querySelector('#menuChoice').value;
-        console.log(userChoice);
-
-        if (userChoice === 'title') {
-            selectedURL = movieURL;
+        if (TMDBMovieFun.userChoice === 'title') {
+            TMDBMovieFun.selectedURL = TMDBMovieFun.movieURL;
         }
 
-        else if (userChoice === 'actor') {
-            selectedURL = peopleURL;
+        else if (TMDBMovieFun.userChoice === 'actor') {
+            TMDBMovieFun.selectedURL = TMDBMovieFun.peopleURL;
         }
 
         else {
-            selectedURL = genreURL;
+            TMDBMovieFun.selectedURL = TMDBMovieFun.genreURL;
         }
 
         TMDBMovieFun.getMovies(userSearch);
 
-        
+        //clear the input
+        document.querySelector('#userInput').value ="";
 
     })
 }
@@ -410,9 +371,8 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
 
         poster.id = simpleResultArray[i].id;
 
-        poster.src = `${basePosterURL}${simpleResultArray[i].poster_path}`;
+        poster.src = `${TMDBMovieFun.basePosterURL}${simpleResultArray[i].poster_path}`;
         poster.alt = `the poster for ${simpleResultArray[i].title}`;
-
 
         const plusButton = document.createElement('button');
         plusButton.className = `toWatchButton`;
@@ -427,14 +387,8 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
 
 
         poster.addEventListener('click', function (event) {
-            // console.log("try");
-            // console.log(event);
-            // console.log(event.target);
             const chosenMovieID = event.target.attributes[0].nodeValue;
             TMDBMovieFun.getMovieDetail(chosenMovieID);
-
-            
-
         });
 
         plusButton.addEventListener('click', function () {
@@ -442,36 +396,30 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
             // console.log(this);
             TMDBMovieFun.addWatchList(movieName);
         });
-
-        
-
     }
 }
 
 TMDBMovieFun.removeToWatchList = () => {
-    const movieList = document.createElement('li');
     const toWatchList = document.querySelector('.toWatchList');
-
-    const movieLis = document.querySelectorAll('.toWatchBar li')
 
     toWatchList.addEventListener('click', (event)=> {
         const removeItem = event.target;
-        // console.log(removeItem);
-
         removeItem.remove();
-    })
-
-
-   
+    }) 
 }
 
 
 TMDBMovieFun.init = () => {
 
+TMDBMovieFun.urlCollection();
+
+TMDBMovieFun.selectorCollection();
+
 TMDBMovieFun.removeToWatchList();
     
-TMDBMovieFun.getFeaturedMovies(genreURL).then(()=>{
+TMDBMovieFun.getFeaturedMovies(TMDBMovieFun.genreURL).then(()=>{
 
+// credit to Slick library: "https://kenwheeler.github.io/slick/"
 $('.responsive').slick({
         dots: true,
         infinite: false,
@@ -496,7 +444,7 @@ $('.responsive').slick({
                 }
             },
             {
-                breakpoint: 605,
+                breakpoint: 730,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1
@@ -512,16 +460,7 @@ $('.responsive').slick({
 
 TMDBMovieFun.search();
 
-
-
 }
 
 TMDBMovieFun.init();
-
-
-$(document).ready(function () {
-
-
-    
-});
 
