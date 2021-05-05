@@ -100,17 +100,20 @@ header h1 {
 .searchFunction {
     width: 100%;
     margin-top:5rem;
-}
-
-.searchFunction form {
+    form {
     margin-top:2rem;
     text-align: center;
     margin-bottom:2rem;
+    
+    }
 }
+
+
 
 option {
     color: white;
     background-color: black;
+    
 }
 
 select, input, .submitButton{
@@ -119,20 +122,14 @@ select, input, .submitButton{
     font-size: 3rem;
     color: white;
     background-color: black;
+    padding: 1rem;
 }
 .submitButton {
     border-radius: 10%;
     
 }
 
-//  {
-//     color: white;
-//     background-color: black;
-// }
 
-// .genreChoice {
-//     display: none;
-// }
 
 .showGenre, .showInput {
     display: unset;
@@ -221,6 +218,26 @@ height: 300px;
     
     img {
         border: 2px solid $borderColor;
+    }
+}
+
+.fa-search {
+    // display: block;
+    font-size: 8rem;
+    // width:100%;
+    margin-left: 45%;
+    
+}
+
+.emptyResultImg {
+    background-color: $footerColor;
+}
+
+footer {
+    margin-top: 2rem;
+    background-color: $footerColor;
+    p {
+        color: yellow;
     }
 }
 
