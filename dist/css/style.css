@@ -280,10 +280,7 @@ h1 {
 h2 {
   margin-bottom: 3rem;
   text-align: center;
-}
-
-.popularMovies h2 {
-  color: #9c2d2d;
+  color: yellowgreen;
 }
 
 li {
@@ -364,7 +361,8 @@ option {
 }
 
 select, input, .submitButton {
-  border: 2px solid yellow;
+  margin-left: 2rem;
+  border: 2px solid yellowgreen;
   font-size: 3rem;
   color: white;
   background-color: black;
@@ -374,7 +372,7 @@ select, input, .submitButton {
   border-radius: 10%;
 }
 
-.showGenre {
+.showGenre, .showInput {
   display: unset;
 }
 
@@ -468,10 +466,30 @@ select, input, .submitButton {
   .carousel .fas {
     margin-left: 3rem;
   }
+  select, input, .submitButton {
+    margin-left: 2rem;
+    border: 2px solid yellowgreen;
+    font-size: 2rem;
+    color: white;
+    background-color: black;
+  }
 }
 
 @media (max-width: 895px) {
   .carousel .fas {
     margin-left: 7rem;
+  }
+}
+
+@media (max-width: 670px) {
+  .carousel .fas {
+    margin-left: 2.5rem;
+  }
+  select, input, .submitButton {
+    margin-left: 2rem;
+    border: 2px solid yellowgreen;
+    font-size: 2rem;
+    color: white;
+    background-color: black;
   }
 }
