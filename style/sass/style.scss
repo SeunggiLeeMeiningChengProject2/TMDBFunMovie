@@ -78,11 +78,17 @@ img {
         }
     }
 
-    .fa-plus-circle {
+    .fa-plus {
         position: absolute;
         top: 2rem;
         left:15%;
-        
+    color:white;
+    background-color: black;
+    border: 2px solid black;
+    padding-bottom:1px;
+    padding-right:0.5px;
+    position:absolute;
+    
     }
 
 }
@@ -153,12 +159,17 @@ select, input, .submitButton{
         border: 2px solid $borderColor;
     }
 
-    .fas {
+    .fa-plus {
     // color: red;
     position: absolute;
     top: 2.1rem;
     margin-left:7.2rem;
     z-index:5;
+    padding-bottom:1px;
+    padding-right:0.5px;
+    color:white;
+    background-color: black;
+    border: 2px solid black;
     }
 
 }
@@ -201,11 +212,15 @@ height: 300px;
         margin: 2rem auto;
     }
     
-    .fas {
+    .fa-star {
         margin:1rem 1rem;
         margin-left:47.2%;
         color:$borderColor;
         
+    }
+    
+    img {
+        border: 2px solid $borderColor;
     }
 }
 

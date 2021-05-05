@@ -334,10 +334,16 @@ img {
   margin-bottom: 2rem;
 }
 
-.gallery .fa-plus-circle {
+.gallery .fa-plus {
   position: absolute;
   top: 2rem;
   left: 15%;
+  color: white;
+  background-color: black;
+  border: 2px solid black;
+  padding-bottom: 1px;
+  padding-right: 0.5px;
+  position: absolute;
 }
 
 header h1 {
@@ -394,11 +400,16 @@ select, input, .submitButton {
   border: 2px solid goldenrod;
 }
 
-.carousel .fas {
+.carousel .fa-plus {
   position: absolute;
   top: 2.1rem;
   margin-left: 7.2rem;
   z-index: 5;
+  padding-bottom: 1px;
+  padding-right: 0.5px;
+  color: white;
+  background-color: black;
+  border: 2px solid black;
 }
 
 .responsive img {
@@ -432,10 +443,14 @@ select, input, .submitButton {
   margin: 2rem auto;
 }
 
-.result .fas {
+.result .fa-star {
   margin: 1rem 1rem;
   margin-left: 47.2%;
   color: goldenrod;
+}
+
+.result img {
+  border: 2px solid goldenrod;
 }
 
 @media (max-width: 1650px) {
@@ -482,8 +497,17 @@ select, input, .submitButton {
 }
 
 @media (max-width: 670px) {
+  .result img {
+    width: 100%;
+  }
   .carousel .fas {
     margin-left: 2.5rem;
+  }
+  .gallery li .fa-plus {
+    left: 18.5%;
+  }
+  .gallery li .fa-star {
+    margin-left: 33%;
   }
   select, input, .submitButton {
     margin-left: 2rem;
@@ -491,5 +515,38 @@ select, input, .submitButton {
     font-size: 2rem;
     color: white;
     background-color: black;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel .fas {
+    margin-left: 8rem;
+  }
+  .gallery li {
+    width: 100%;
+  }
+  .gallery li .fa-plus {
+    left: 15.5%;
+    top: 4.2%;
+  }
+  .gallery li .fa-star {
+    margin-left: 42%;
+  }
+}
+
+@media (max-width: 380px) {
+  .gallery li .fa-plus {
+    left: 18.5%;
+  }
+  .gallery li .fa-star {
+    margin-left: 33%;
   }
 }

@@ -57,8 +57,24 @@
 
 @media (max-width: 670px) {
     //home
+
+        .result img {
+        width:100%;
+    }
+    
         .carousel .fas {
         margin-left:2.5rem;
+    }
+
+    .gallery li{
+
+        .fa-plus{
+            left:18.5%;
+        }
+
+        .fa-star{
+            margin-left:33%;
+        }
     }
 
     select, input, .submitButton{
@@ -67,6 +83,56 @@
     font-size: 2rem;
     color: white;
     background-color: black;
+    max-width:300px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom:1.5rem;
 }
 
+
+
+    form {
+        display:flex;
+        flex-direction:column;
+        
+    }
+
+}
+
+@media (max-width: 480px) {
+            
+    .carousel .fas {
+        margin-left:8rem;
+    }
+
+    .gallery li {
+        width:100%;
+
+        .fa-plus {
+            left:15.5%;
+            top:4.2%;
+        }
+
+        .fa-star {
+            margin-left:42%;
+        }
+    }
+
+
+
+}
+
+
+@media (max-width:380px) {
+
+        .gallery li{
+
+        .fa-plus{
+            left:18.5%;
+        }
+
+        .fa-star{
+            margin-left:33%;
+        }
+    }
 }

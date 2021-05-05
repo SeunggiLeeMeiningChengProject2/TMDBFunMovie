@@ -180,7 +180,7 @@ TMDBMovieFun.displayPosters = (simpleResultArray) => {
         const plusButton = document.createElement('button');
         plusButton.className = `toWatchButton`;
         plusButton.id = simpleResultArray[i].title;
-        plusButton.innerHTML = '<i class="fas fa-plus-circle"></i>';
+        plusButton.innerHTML = '<i class="fas fa-plus"></i>';
         listElement.appendChild(plusButton);
 
 
@@ -210,6 +210,8 @@ TMDBMovieFun.addWatchList = (movieName) => {
     const toWatchList = document.querySelector('.toWatchList');
     movieList.textContent = movieName;
     toWatchList.appendChild(movieList);
+
+
 
 
 }
@@ -438,7 +440,7 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
         const plusButton = document.createElement('button');
         plusButton.className = `toWatchButton`;
         plusButton.id = simpleResultArray[i].title;
-        plusButton.innerHTML = '<i class="fas fa-plus-circle"></i>';
+        plusButton.innerHTML = '<i class="fas fa-plus"></i>';
         listElement.appendChild(plusButton);
 
 
@@ -462,6 +464,8 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
             console.log(this);
             TMDBMovieFun.addWatchList(movieName);
         });
+
+        
 
     }
 }
@@ -496,7 +500,7 @@ $('.responsive').slick({
                 }
             },
             {
-                breakpoint: 480,
+                breakpoint: 481,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1
