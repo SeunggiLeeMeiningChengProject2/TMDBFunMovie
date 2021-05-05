@@ -37,6 +37,14 @@
         margin-left:3rem;
     }
 
+    select, input, .submitButton{
+    margin-left:2rem;
+    border: 2px solid yellowgreen;
+    font-size: 2rem;
+    color: white;
+    background-color: black;
+}
+
 }
 
 @media (max-width: 895px) {
@@ -47,4 +55,18 @@
 
 }
 
+@media (max-width: 670px) {
+    //home
+        .carousel .fas {
+        margin-left:2.5rem;
+    }
 
+    select, input, .submitButton{
+    margin-left:2rem;
+    border: 2px solid yellowgreen;
+    font-size: 2rem;
+    color: white;
+    background-color: black;
+}
+
+}

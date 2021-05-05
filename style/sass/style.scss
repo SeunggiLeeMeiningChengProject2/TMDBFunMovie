@@ -20,11 +20,9 @@ h1 {
 h2 {
     margin-bottom: 3rem;
     text-align: center;
+    color: yellowgreen;
 }
 
-.popularMovies h2{
-    color:#9c2d2d;
-}
 
 li {
     list-style:none;
@@ -110,13 +108,15 @@ option {
 }
 
 select, input, .submitButton{
-    border: 2px solid yellow;
+    margin-left:2rem;
+    border: 2px solid yellowgreen;
     font-size: 3rem;
     color: white;
     background-color: black;
 }
 .submitButton {
     border-radius: 10%;
+    
 }
 
 //  {
@@ -128,7 +128,7 @@ select, input, .submitButton{
 //     display: none;
 // }
 
-.showGenre {
+.showGenre, .showInput {
     display: unset;
 }
 

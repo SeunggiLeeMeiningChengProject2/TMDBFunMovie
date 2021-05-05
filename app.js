@@ -72,6 +72,7 @@ document.querySelector('#menuChoice').addEventListener('change', () => {
         document.querySelector('#userInput').className = 'hideInput';
     } else {
         document.querySelector('#genreChoice').className = 'hideGenre';
+        document.querySelector('#userInput').className = 'showInput';
     }
 })
 
