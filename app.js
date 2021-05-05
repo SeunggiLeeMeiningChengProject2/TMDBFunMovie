@@ -221,7 +221,21 @@ TMDBMovieFun.addWatchList = (movieName) => {
 
     const movieList = document.createElement('li');
     const toWatchList = document.querySelector('.toWatchList');
+    
     movieList.textContent = movieName;
+
+    const movieLis = document.querySelectorAll('.toWatchBar li')
+
+    for (movieLi of movieLis) {
+        console.log(movieLi);
+        if (movieName === movieLi.textContent){
+            alert('the movie is already in your list');
+            return;
+        }
+    }
+
+
+
     toWatchList.appendChild(movieList);
 
 
@@ -440,6 +454,10 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
 
     for (let i = 0; i < simpleResultArray.length; i++) {
         const listElement = document.createElement('li');
+
+        const divElement = document.createElement('div');
+        divElement.className = 'movieContainer';
+
         const poster = document.createElement('img');
         featuredList.append(listElement);
 
@@ -456,11 +474,12 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
         plusButton.className = `toWatchButton`;
         plusButton.id = simpleResultArray[i].title;
         plusButton.innerHTML = '<i class="fas fa-plus"></i>';
-        listElement.appendChild(plusButton);
+        
+        listElement.appendChild(divElement);
 
-
-        listElement.append(poster);
-        listElement.appendChild(description);
+        divElement.appendChild(plusButton);
+        divElement.append(poster);
+        divElement.appendChild(description);
 
 
         poster.addEventListener('click', function (event) {
@@ -484,6 +503,8 @@ TMDBMovieFun.displayFeaturedMovies = (simpleResultArray) => {
 
     }
 }
+
+
 
 
 TMDBMovieFun.init = () => {

@@ -264,9 +264,17 @@ p, input, label, select, button, span, .fas {
   font-size: 2rem;
 }
 
+.fa-plus {
+  font-size: 2.2rem;
+}
+
 html {
   background-color: black;
   color: white;
+}
+
+main {
+  min-height: 80rem;
 }
 
 h1 {
@@ -294,6 +302,10 @@ p {
 img {
   display: block;
   margin: 0 auto;
+}
+
+.fa-plus:hover {
+  cursor: pointer;
 }
 
 .wrapper {
@@ -397,14 +409,19 @@ select, input, .submitButton {
 }
 
 .carousel li img {
-  position: relative;
   border: 2px solid goldenrod;
+}
+
+.carousel .movieContainer {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
 }
 
 .carousel .fa-plus {
   position: absolute;
   top: 2.1rem;
-  margin-left: 7.2rem;
+  left: 60px;
   z-index: 5;
   padding-bottom: 1px;
   padding-right: 0.5px;
@@ -472,34 +489,7 @@ footer p {
   color: yellow;
 }
 
-@media (max-width: 1650px) {
-  .carousel .fas {
-    margin-left: 6rem;
-  }
-}
-
-@media (max-width: 1470px) {
-  .carousel .fas {
-    margin-left: 4.2rem;
-  }
-}
-
-@media (max-width: 1235px) {
-  .carousel .fas {
-    margin-left: 6rem;
-  }
-}
-
-@media (max-width: 1165px) {
-  .carousel .fas {
-    margin-left: 6rem;
-  }
-}
-
 @media (max-width: 1026px) {
-  .carousel .fas {
-    margin-left: 3rem;
-  }
   select, input, .submitButton {
     margin-left: 2rem;
     border: 2px solid yellowgreen;
@@ -509,18 +499,9 @@ footer p {
   }
 }
 
-@media (max-width: 895px) {
-  .carousel .fas {
-    margin-left: 7rem;
-  }
-}
-
 @media (max-width: 670px) {
   .result img {
     width: 100%;
-  }
-  .carousel .fas {
-    margin-left: 2.5rem;
   }
   .gallery li .fa-plus {
     left: 18.5%;
@@ -542,12 +523,6 @@ footer p {
   form {
     display: flex;
     flex-direction: column;
-  }
-}
-
-@media (max-width: 605px) {
-  .carousel .fas {
-    margin-left: 11.5rem;
   }
 }
 

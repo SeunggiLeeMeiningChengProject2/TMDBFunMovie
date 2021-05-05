@@ -9,6 +9,16 @@ html{
     color: white;
 }
 
+// header {
+//     background-image:url("https://placekitten.com/1000/1000");
+//     height:50rem;
+//     background-size:cover;
+// }
+
+main {
+        min-height:80rem;
+}
+
 h1 {
     margin-top: 2rem;
     margin-bottom:4rem;
@@ -35,6 +45,11 @@ p {
 img {
     display:block;
     margin: 0 auto;
+}
+
+
+.fa-plus:hover {
+    cursor: pointer;
 }
 
 .wrapper {
@@ -152,15 +167,20 @@ select, input, .submitButton{
     }
 
     li img{
-        position: relative;
         border: 2px solid $borderColor;
+    }
+
+    .movieContainer {
+        position: relative;
+        width:300px;
+        margin: 0 auto;
     }
 
     .fa-plus {
     // color: red;
     position: absolute;
     top: 2.1rem;
-    margin-left:7.2rem;
+    left: 60px;
     z-index:5;
     padding-bottom:1px;
     padding-right:0.5px;
@@ -236,6 +256,7 @@ height: 300px;
 footer {
     margin-top: 2rem;
     background-color: $footerColor;
+
     p {
         color: yellow;
     }
