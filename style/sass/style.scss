@@ -2,18 +2,11 @@
 @import "partials/variables";
 @import "partials/typography";
 
-//#004EA8
-//#4682B4
+
 html{
     background-color:black;
     color: white;
 }
-
-// header {
-//     background-image:url("https://placekitten.com/1000/1000");
-//     height:50rem;
-//     background-size:cover;
-// }
 
 main {
         min-height:80rem;
@@ -70,7 +63,7 @@ img {
         width:33%;
         padding: 0 1rem;
         position: relative;
-         img {
+            img {
         width:80%;
         display: block;
         margin-bottom:1rem;
@@ -80,11 +73,6 @@ img {
             margin-left: 40%;
             color: $borderColor;
         }
-
-        // div {
-            
-        //     margin: 0 auto;
-        // }
 
         p {
             margin-top:1rem;
@@ -159,7 +147,6 @@ select, input, .submitButton{
 
 .carousel {
     width: 70vw;
-    // margin-left: 100px;
     margin: 0 auto;
     h2 {
         text-align: center;
@@ -176,7 +163,6 @@ select, input, .submitButton{
     }
 
     .fa-plus {
-    // color: red;
     position: absolute;
     top: 2.1rem;
     left: 60px;
@@ -192,7 +178,6 @@ select, input, .submitButton{
 
 
 .responsive img{
-// width: 200px;
 height: 300px;
 }
 
@@ -236,11 +221,8 @@ height: 300px;
 }
 
 .fa-search {
-    // display: block;
     font-size: 8rem;
-    // width:100%;
     margin-left: 45%;
-    
 }
 
 .emptyResultImg {
