@@ -7,12 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="./dist/css/style.css">
-
     <script src="https://kit.fontawesome.com/12a501f4a0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="slick/slick.css" />
-
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
     <title>TMDB Movie Fun</title>
 </head>
@@ -24,14 +21,12 @@
         </div>
     </header>
     <main>
+        <!-- featured movies section with carousel -->
         <div class="wrapper flexContainer">
             <section class="popularMovies">
-
                 <div class="carousel">
                     <h2>Featured Movies</h2>
-
                     <div class="responsive">
-
                     </div>
                 </div>
             </section>
@@ -41,16 +36,13 @@
                 <div class="toWatchBar">
                     <h2>To Watch List</h2>
                     <ul class="toWatchList">
-
                     </ul>
-
                 </div>
             </section>
 
 
             <section class="searchFunction">
                 <form>
-
                     <label for="menuChoice" class="sr-only">what search type do you want</label>
                     <select name="menuChoice" id="menuChoice">
                         <option value="title">Search by movie title</option>
@@ -58,6 +50,7 @@
                         <option value="genre">Search by genre</option>
                     </select>
 
+                    <!-- selectors for Genre ID used in TMDB API -->
                     <label for="genreChoice" class="sr-only">Select genre</label>
                     <select name="genreChoice" class="genreChoice hideGenre" id="genreChoice">
                         <option value="28">Action</option>
@@ -82,12 +75,12 @@
 
                     <label for='userInput' class='sr-only'>Search bar</label>
                     <input type='text' name="userInput" id='userInput' placeholder="Search TMDB" required>
-
                     <button type="submit" class="submitButton">Search</button>
                 </form>
+
+                <!-- where search result is appended -->
                 <div id="simpleSearch" class="result">
                     <ul class="gallery">
-
                     </ul>
                 </div>
             </section>
@@ -102,8 +95,8 @@
 
     <script src='https://code.jquery.com/jquery-3.4.0.min.js'
         integrity='sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=' crossorigin='anonymous'></script>
-    <!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+    
+    <!-- credit to Slick library: "https://kenwheeler.github.io/slick/" -->
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script src="app.js"></script>
 
